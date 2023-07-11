@@ -25,6 +25,9 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [UserController::class, 'store']);
 
 Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('user', [UserController::class, 'show']);
+    Route::put('user', [UserController::class, 'update']);
+    Route::delete('user', [UserController::class, 'destroy']);
 });
 
 Route::get('registerIP', [AddressController::class, 'registerIP']);
